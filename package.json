@@ -1,0 +1,26 @@
+{
+  "name": "course-final-project",
+  "version": "1.0.0",
+  "description": "JS for QA/AQA course materials",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "ui": "npx playwright test --ui",
+    "debug": "npx playwright test --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarkurnikov/YAJS-Final-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yarkurnikov/YAJS-Final-Project/issues"
+  },
+  "homepage": "https://github.com/yarkurnikov/YAJS-Final-Project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0"
+  }
+}
