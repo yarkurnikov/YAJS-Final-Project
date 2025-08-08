@@ -17,8 +17,4 @@ export class ProductPage {
 
   }
 
-  async getProductPrice() {
-    return this.productPrice.innerText();
-  }
-
 }
