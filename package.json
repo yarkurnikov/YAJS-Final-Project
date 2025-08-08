@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npx playwright test",
     "ui": "npx playwright test --ui",
-    "debug": "npx playwright test --debug"
+    "debug": "npx playwright test --debug",
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,13 @@
   },
   "homepage": "https://github.com/yarkurnikov/YAJS-Final-Project#readme",
   "devDependencies": {
+    "@eslint/js": "^9.32.0",
     "@playwright/test": "^1.54.1",
-    "@types/node": "^24.1.0"
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "@types/node": "^24.1.0",
+    "eslint": "^9.32.0",
+    "eslint-plugin-playwright": "^2.2.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
   }
 }
