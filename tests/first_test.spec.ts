@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/login.page';
 import { HomePage } from '../pages/home.page';
 import { AccountPage } from '../pages/account.page';
+import { ProductPage } from '../pages/product.page';
 
 test('Verify login with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -18,16 +19,17 @@ test('Verify login with valid credentials', async ({ page }) => {
 
 test('​Verify user can view product details', async ({ page }) => {
   const homePage = new HomePage(page);
+  const productPage = new ProductPage(page);
 
   await page.goto(''); 
 
   await homePage.clickOnItemCardByName('Combination Pliers');
 
   await expect(page).toHaveURL(/.*\/product\/.*/);
-  await expect(page.getByTestId('product-name')).toHaveText('Combination Pliers'); 
-  await expect(page.getByTestId('unit-price')).toHaveText('14.15');
+  await expect(productPage.productTitle).toContainText('Combination Pliers');
+  await expect(productPage.productPrice).toContainText('14.15');
 
-  await expect(page.getByTestId('add-to-cart')).toBeVisible();
-  await expect(page.getByTestId('add-to-favorites')).toBeVisible();
+  await expect(productPage.addToCartButton).toBeVisible();
+  await expect(productPage.addToFavoriteButton).toBeVisible();
 
 });
