@@ -32,4 +32,19 @@ export class HomePage {
   async clickOnItemCardByName(name: string): Promise<void> {
     await this.card.filter({ hasText: `${name}` }).click();
   }
+
+  async waitForProductsResponse(sortType: 'asc' | 'desc', sortField: 'name' | 'price' = 'name') {
+    return this.page.waitForResponse(res =>
+      res.url().includes(`/products?page=0&sort=${sortField},${sortType}&between=price,1,100`) &&
+      res.status() === 200
+    );
+  }
+
+  async waitForCategoryFilterResponse() {
+    return this.page.waitForResponse(res => {
+      const url = res.url();
+      return url.includes('/products') && url.includes('by_category=01K31V80S72P269MMJASSTPZ7R') &&
+      res.status() === 200;
+    });
+  }
 }
