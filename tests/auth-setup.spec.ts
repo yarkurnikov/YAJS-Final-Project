@@ -9,7 +9,7 @@ test('Verify login with valid credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.openLoginPage();
-  await loginPage.performLogin(AUTH_CREDENTIALS.CUSTOMER.EMAIL, AUTH_CREDENTIALS.CUSTOMER.PASSWORD);
+  await loginPage.performLogin(AUTH_CREDENTIALS.customer.email, AUTH_CREDENTIALS.customer.password);
   await expect(page).toHaveURL(/.*\/account$/);
 
   await page.context().storageState({ path: authFile });
