@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../pages/home.page';
+import { expect } from '@playwright/test';
 import { SortOption, PowerTools } from '../enums/categories.enum';
 import { arraySorting } from '../helpers/sorting.helper';
+import { test } from '../fixtures/myFixtures';
 
 [
   {
@@ -13,16 +13,15 @@ import { arraySorting } from '../helpers/sorting.helper';
     manualSortType: 'asc' as const
   }
 ].forEach(({ dropdownSortType, manualSortType }) => {
-  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ page }) => {
-    const homePage = new HomePage(page);
+  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ allPages, page }) => {
 
     await page.goto('');
-    const responsePromise = homePage.waitForProductsResponse(manualSortType, 'name');
-    await homePage.sortDropdown.selectOption({ value: dropdownSortType });
+    const responsePromise = allPages.homePage.waitForProductsResponse(manualSortType, 'name');
+    await allPages.homePage.sortDropdown.selectOption({ value: dropdownSortType });
 
     await responsePromise;
 
-    const afterSortingCardsNames = await homePage.getProductCardsNames();
+    const afterSortingCardsNames = await allPages.homePage.getProductCardsNames();
     const afterSortingManual = arraySorting([...afterSortingCardsNames], manualSortType);
     expect(afterSortingCardsNames).toEqual(afterSortingManual);
   });
@@ -38,29 +37,27 @@ import { arraySorting } from '../helpers/sorting.helper';
     manualSortType: 'asc' as const
   }
 ].forEach(({ dropdownSortType, manualSortType }) => {
-  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ page }) => {
-    const homePage = new HomePage(page);
+  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ allPages, page }) => {
 
     await page.goto('');
-    const responsePromise = homePage.waitForProductsResponse(manualSortType, 'price');
-    await homePage.sortDropdown.selectOption({ value: dropdownSortType });
+    const responsePromise = allPages.homePage.waitForProductsResponse(manualSortType, 'price');
+    await allPages.homePage.sortDropdown.selectOption({ value: dropdownSortType });
 
     await responsePromise;
     
-    const afterSortingCardsPrices = await homePage.getProductCardsPrices();
+    const afterSortingCardsPrices = await allPages.homePage.getProductCardsPrices();
     const afterSortingManual = arraySorting([...afterSortingCardsPrices], manualSortType);
     expect(afterSortingCardsPrices).toEqual(afterSortingManual);
   });
 });
 
-test('Verify user can filter products by category', async ({ page }) => {
-  const homePage = new HomePage(page);
+test('Verify user can filter products by category', async ({ allPages, page }) => {
 
   await page.goto('');
-  const responsePromise = homePage.waitForCategoryFilterResponse();
-  await homePage.selectCategoryFilter(PowerTools.SANDER);
+  const responsePromise = allPages.homePage.waitForCategoryFilterResponse();
+  await allPages.homePage.selectCategoryFilter(PowerTools.SANDER);
   
   await responsePromise;
   
-  expect(await homePage.checkProductNames('Sander')).toBeTruthy();
+  expect(await allPages.homePage.checkProductNames('Sander')).toBeTruthy();
 });
