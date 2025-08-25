@@ -61,7 +61,7 @@ export class CheckOutPage {
     await this.paymentMethodDropdown.selectOption(paymentMethodName);
   }
 
-  async fillCreditCardDataAndContinue(creditCardNumber: string, expirationDate: string, cvvCode: string, cardHolderName: string): Promise<void> {
+  async fillCreditCardData(creditCardNumber: string, expirationDate: string, cvvCode: string, cardHolderName: string): Promise<void> {
     await this.creditCardNumberField.fill(creditCardNumber);
     await this.creditCardExpirationDateField.fill(expirationDate);
     await this.creditCardCvvField.fill(cvvCode);

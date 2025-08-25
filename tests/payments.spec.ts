@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../fixtures/myFixtures';
 import { CREDIT_CARD_DATA } from '../constants/payments.constants';
 
-test('Verify user can make an order by Credit Card', async ({ loggedInApp }) => {
+test('Verify user can make purchase by Credit Card', async ({ loggedInApp }) => {
   await loggedInApp.homePage.page.goto('/');
   const firstCard = await loggedInApp.homePage.getFirstProductCard();
 
@@ -35,7 +35,7 @@ test('Verify user can make an order by Credit Card', async ({ loggedInApp }) => 
   await loggedInApp.checkOutPage.proceedToCheckOutButtonClick();
 
   await loggedInApp.checkOutPage.selectPaymentMethod('Credit Card');
-  await loggedInApp.checkOutPage.fillCreditCardDataAndContinue(CREDIT_CARD_DATA.creditCardNumber, CREDIT_CARD_DATA.creditCardExpirationDate, 
+  await loggedInApp.checkOutPage.fillCreditCardData(CREDIT_CARD_DATA.creditCardNumber, CREDIT_CARD_DATA.creditCardExpirationDate, 
     CREDIT_CARD_DATA.creditCardCvv, CREDIT_CARD_DATA.creditCardHolderName);
   await loggedInApp.checkOutPage.confirmButtonClick();
 
