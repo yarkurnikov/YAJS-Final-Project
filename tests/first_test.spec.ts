@@ -1,14 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { AccountPage } from '../pages/account.page';
+import { expect } from '@playwright/test';
+import { test } from '../fixtures/myFixtures';
 
 test.use({ storageState: './playwright/.auth/user.json' });
 test.describe('Login test using storage file', () => {
   test.use({ storageState: './playwright/.auth/user.json' });
-  test('Verify login with valid credentials', async ({ page }) => {
-    const accountPage = new AccountPage(page);
+  test('Verify login with valid credentials', async ({ allPages, page }) => {
 
     await page.goto('/account');
-    await expect(accountPage.pageTitle).toHaveText('My account');
-    await expect(accountPage.header.navMenu).toHaveText('Jane Doe');
+    await expect(allPages.accountPage.pageTitle).toHaveText('My account');
+    await expect(allPages.accountPage.header.navMenu).toHaveText('Jane Doe');
   });
 });
