@@ -33,6 +33,10 @@ export class HomePage {
     await this.card.filter({ hasText: `${name}` }).click();
   }
 
+  async getFirstProductCard(): Promise<string> {
+    return this.card.getByTestId('product-name').first().innerText();
+  }
+
   async waitForProductsResponse(sortType: 'asc' | 'desc', sortField: 'name' | 'price' = 'name') {
     return this.page.waitForResponse(res =>
       res.url().includes(`/products?page=0&sort=${sortField},${sortType}&between=price,1,100`) &&
