@@ -43,7 +43,6 @@ export class CheckOutPage {
   }
 
   async proceedToCheckOutButtonClick(): Promise<void> {
-    await this.proceedToCheckOutButton.waitFor({ state: 'visible' });
     await this.proceedToCheckOutButton.click();
   }
 
@@ -69,7 +68,6 @@ export class CheckOutPage {
   }
 
   async confirmButtonClick(): Promise<void> {
-    await this.confirmButton.waitFor({ state: 'visible' });
     await this.confirmButton.click();
   }
 

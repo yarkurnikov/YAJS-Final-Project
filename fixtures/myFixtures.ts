@@ -30,6 +30,7 @@ export const test = base.extend<MyFixtures>({
       }
     });
 
+
     const page = await context.newPage();
     const allPages = new AllPages(page);
     

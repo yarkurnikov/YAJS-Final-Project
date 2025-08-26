@@ -3,7 +3,10 @@ import { test } from '../fixtures/myFixtures';
 import { CREDIT_CARD_DATA } from '../constants/payments.constants';
 
 test('Verify user can make purchase by Credit Card', async ({ loggedInApp }) => {
-  await loggedInApp.homePage.page.goto('/');
+  await loggedInApp.homePage.page.goto('');
+
+  await loggedInApp.homePage.page.reload();
+
   const firstCard = await loggedInApp.homePage.getFirstProductCard();
 
   await loggedInApp.homePage.clickOnItemCardByName(firstCard);
