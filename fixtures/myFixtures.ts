@@ -30,9 +30,14 @@ export const test = base.extend<MyFixtures>({
       }
     });
 
-
     const page = await context.newPage();
     const allPages = new AllPages(page);
+    
+    await page.goto('');
+
+    await page.evaluate((token) => {
+      localStorage.setItem('auth-token', token);
+    }, authToken);
     
     await use(allPages);
     await context.close();
