@@ -4,7 +4,7 @@ import { test } from '../fixtures/myFixtures';
 test.use({ storageState: './playwright/.auth/user.json' });
 test.describe('Login test using storage file', () => {
   test.use({ storageState: './playwright/.auth/user.json' });
-  test('Verify login with valid credentials', async ({ allPages, page }) => {
+  test('Verify login with valid credentials @smoke', async ({ allPages, page }) => {
 
     await page.goto('/account');
     await expect(allPages.accountPage.pageTitle).toHaveText('My account');

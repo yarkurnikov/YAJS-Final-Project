@@ -1,8 +1,8 @@
 import { addMonths } from '../helpers/addMonths.helper';
 
 export const CREDIT_CARD_DATA = {
-  creditCardNumber: '1111-1111-1111-1111',
+  creditCardNumber: process.env.CREDIT_CARD_NUMBER!,
   creditCardExpirationDate: addMonths(Date.now(), 3),
-  creditCardCvv: '123',
-  creditCardHolderName: 'Yaroslav Test'
+  creditCardCvv: process.env.CREDIT_CARD_CVV!,
+  creditCardHolderName: process.env.CREDIT_CARD_HOLDER_NAME || 'Test User'
 };
