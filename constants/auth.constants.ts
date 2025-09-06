@@ -1,6 +1,6 @@
 export const AUTH_CREDENTIALS = {
   customer: {
-    email: 'customer@practicesoftwaretesting.com',
-    password: 'welcome01'
+    email: process.env.AUTH_CUSTOMER_EMAIL || 'customer@practicesoftwaretesting.com',
+    password: process.env.AUTH_CUSTOMER_PASSWORD!
   }
 } as const;

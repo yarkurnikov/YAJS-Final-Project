@@ -13,7 +13,7 @@ import { test } from '../fixtures/myFixtures';
     manualSortType: 'asc' as const
   }
 ].forEach(({ dropdownSortType, manualSortType }) => {
-  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ allPages, page }) => {
+  test(`Verify user can perform sorting by ${dropdownSortType} @regression`, async ({ allPages, page }) => {
 
     await page.goto('');
     const responsePromise = allPages.homePage.waitForProductsResponse(manualSortType, 'name');
@@ -37,7 +37,7 @@ import { test } from '../fixtures/myFixtures';
     manualSortType: 'asc' as const
   }
 ].forEach(({ dropdownSortType, manualSortType }) => {
-  test(`Verify user can perform sorting by ${dropdownSortType}`, async ({ allPages, page }) => {
+  test(`Verify user can perform sorting by ${dropdownSortType} @regression`, async ({ allPages, page }) => {
 
     await page.goto('');
     const responsePromise = allPages.homePage.waitForProductsResponse(manualSortType, 'price');
@@ -51,7 +51,7 @@ import { test } from '../fixtures/myFixtures';
   });
 });
 
-test('Verify user can filter products by category', async ({ allPages, page }) => {
+test('Verify user can filter products by category @regression', async ({ allPages, page }) => {
 
   await page.goto('');
   const responsePromise = allPages.homePage.waitForCategoryFilterResponse();
