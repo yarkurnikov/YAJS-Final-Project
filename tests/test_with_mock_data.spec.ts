@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '../fixtures/myFixtures';
+import { BASE_API_URL } from '../config/baseConfig';
 
 const mockProducts = {
   data: Array.from({ length: 20 }, (_, i) => ({
@@ -13,7 +14,7 @@ const mockProducts = {
 };
 
 test('mocks 20 products and doesn\'t call real API @smoke', async ({ page }) => {
-  await page.route(`${process.env.BASE_API_URL}/products*`, async route => {
+  await page.route(`${BASE_API_URL}/products*`, async route => {
     await route.fulfill({ json: mockProducts });
   });
   

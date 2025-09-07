@@ -10,3 +10,4 @@ export const AUTH_CUSTOMER_PASSWORD: string = process.env.AUTH_CUSTOMER_PASSWORD
 export const CREDIT_CARD_NUMBER: string = process.env.CREDIT_CARD_NUMBER!;
 export const CREDIT_CARD_CVV: string = process.env.CREDIT_CARD_CVV!;
 export const CREDIT_CARD_HOLDER_NAME: string = process.env.CREDIT_CARD_HOLDER_NAME ?? 'Test User';
+
