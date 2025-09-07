@@ -26,20 +26,22 @@ jobs:
       run: npx playwright install --with-deps
     
     - name: Run Smoke Tests
-      run: npx playwright test --grep "@smoke"
+      run: npx playwright test --grep "@smoke" --timeout=60000
       env:
-        # Base URLs
-        BASE_URL: ${{ vars.BASE_URL || 'https://practicesoftwaretesting.com' }}
-        BASE_API_URL: ${{ vars.BASE_API_URL || 'https://api.practicesoftwaretesting.com' }}
+        # Override URLs if needed (defaults in constants/urls.constants.ts)
+        BASE_URL: ${{ vars.BASE_URL }}
+        BASE_API_URL: ${{ vars.BASE_API_URL }}
         
-        # Authentication credentials (using secrets for sensitive data)
-        AUTH_CUSTOMER_EMAIL: ${{ vars.AUTH_CUSTOMER_EMAIL || 'customer@practicesoftwaretesting.com' }}
+        # Override auth email if needed (default in constants/auth.constants.ts)
+        AUTH_CUSTOMER_EMAIL: ${{ vars.AUTH_CUSTOMER_EMAIL }}
+        # Required secrets
         AUTH_CUSTOMER_PASSWORD: ${{ secrets.AUTH_CUSTOMER_PASSWORD }}
         
-        # Credit card test data (using secrets for sensitive data)
+        # Required credit card secrets
         CREDIT_CARD_NUMBER: ${{ secrets.CREDIT_CARD_NUMBER }}
         CREDIT_CARD_CVV: ${{ secrets.CREDIT_CARD_CVV }}
-        CREDIT_CARD_HOLDER_NAME: ${{ vars.CREDIT_CARD_HOLDER_NAME || 'Test User' }}
+        # Override holder name if needed (default in constants/payments.constants.ts)
+        CREDIT_CARD_HOLDER_NAME: ${{ vars.CREDIT_CARD_HOLDER_NAME }}
         
         # CI specific settings
         CI: true
