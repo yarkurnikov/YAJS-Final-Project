@@ -51,7 +51,7 @@ import { test } from '../fixtures/myFixtures';
   });
 });
 
-test('Verify user can filter products by category @regression', async ({ allPages, page }) => {
+test('Verify user can filter products by category', async ({ allPages, page }) => {
 
   await page.goto('');
   const responsePromise = allPages.homePage.waitForCategoryFilterResponse();

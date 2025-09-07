@@ -26,7 +26,7 @@ jobs:
       run: npx playwright install --with-deps
     
     - name: Run Regression Tests
-      run: npx playwright test --grep "@regression" --timeout=120000
+      run: npx playwright test --grep "@regression"
       env:
         # Override URLs if needed (defaults in constants/urls.constants.ts)
         BASE_URL: ${{ vars.BASE_URL }}
