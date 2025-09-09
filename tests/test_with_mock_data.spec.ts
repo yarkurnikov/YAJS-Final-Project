@@ -13,7 +13,7 @@ const mockProducts = {
   }))
 };
 
-test('mocks 20 products and doesn\'t call real API @smoke', async ({ page }) => {
+test('mocks 20 products and doesn\'t call real API', { tag: ['@smoke'] }, async ({ page }) => {
   await page.route(`${BASE_API_URL}/products*`, async route => {
     await route.fulfill({ json: mockProducts });
   });
