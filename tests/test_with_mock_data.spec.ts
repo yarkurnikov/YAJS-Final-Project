@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '../fixtures/myFixtures';
+import { BASE_API_URL } from '../config/baseConfig';
 
 const mockProducts = {
   data: Array.from({ length: 20 }, (_, i) => ({
@@ -12,12 +13,12 @@ const mockProducts = {
   }))
 };
 
-test('mocks 20 products and doesn\'t call real API', async ({ page }) => {
-  await page.route('https://api.practicesoftwaretesting.com/products*', async route => {
+test('mocks 20 products and doesn\'t call real API', { tag: ['@smoke'] }, async ({ page }) => {
+  await page.route(`${BASE_API_URL}/products*`, async route => {
     await route.fulfill({ json: mockProducts });
   });
   
-  await page.goto('');
+  await page.goto('/');
   
   await expect(page.locator('a[data-test^="product"]')).toHaveCount(20);
 });

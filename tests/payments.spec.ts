@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../fixtures/myFixtures';
 import { CREDIT_CARD_DATA } from '../constants/payments.constants';
 
-test('Verify user can make purchase by Credit Card', async ({ loggedInApp }) => {
+test('Verify user can make purchase by Credit Card', { tag: ['@regression'] }, async ({ loggedInApp }) => {
   await loggedInApp.homePage.page.goto('');
 
   await loggedInApp.homePage.page.reload();

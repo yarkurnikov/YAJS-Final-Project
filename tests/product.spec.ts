@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '../fixtures/myFixtures';
 
-test('​Verify user can view product details', async ({ allPages, page }) => {
+test('​Verify user can view product details', { tag: ['@smoke'] }, async ({ allPages, page }) => {
   const productName = 'Combination Pliers';
 
   await page.goto(''); 
@@ -18,7 +18,7 @@ test('​Verify user can view product details', async ({ allPages, page }) => {
 });
 
 
-test('Verify user can add product to cart', async ({ allPages, page }) => {
+test('Verify user can add product to cart', { tag: ['@smoke'] }, async ({ allPages, page }) => {
   const productName = 'Slip Joint Pliers';
 
   await page.goto(''); 

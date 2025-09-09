@@ -15,12 +15,12 @@ export class LoginPage {
 
   async openLoginPage() {
     await this.page.goto('/auth/login');
+    await this.emailField.waitFor({ state: 'visible' });
   }
 
   async performLogin(email: string, password: string): Promise<void> {
     await this.emailField.fill(email);
     await this.passwordField.fill(password);
-        
     await this.submitButton.click();
   }
 

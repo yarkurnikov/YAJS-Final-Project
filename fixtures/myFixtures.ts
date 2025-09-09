@@ -1,6 +1,7 @@
 import { test as base } from '@playwright/test';
 import { AllPages } from '../pages/allPages';
 import { AUTH_CREDENTIALS } from '../constants/auth.constants';
+import { BASE_API_URL } from '../config/baseConfig';
 
 type MyFixtures = {
   allPages: AllPages;
@@ -14,7 +15,7 @@ export const test = base.extend<MyFixtures>({
   },
 
   loggedInApp: async ({ browser, request }, use) => {
-    const response = await request.post('https://api.practicesoftwaretesting.com/users/login', {
+    const response = await request.post(`${BASE_API_URL}/users/login`, {
       data: {
         'email': AUTH_CREDENTIALS.customer.email,
         'password': AUTH_CREDENTIALS.customer.password,
@@ -33,7 +34,7 @@ export const test = base.extend<MyFixtures>({
     const page = await context.newPage();
     const allPages = new AllPages(page);
     
-    await page.goto('');
+    await page.goto('/');
 
     await page.evaluate((token) => {
       localStorage.setItem('auth-token', token);
