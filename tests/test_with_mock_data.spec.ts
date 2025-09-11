@@ -14,11 +14,17 @@ const mockProducts = {
 };
 
 test('mocks 20 products and doesn\'t call real API', { tag: ['@smoke'] }, async ({ page }) => {
-  await page.route(`${BASE_API_URL}/products*`, async route => {
-    await route.fulfill({ json: mockProducts });
+  await test.step('Set up API route mocking', async () => {
+    await page.route(`${BASE_API_URL}/products*`, async route => {
+      await route.fulfill({ json: mockProducts });
+    });
   });
   
-  await page.goto('/');
+  await test.step('Navigate to home page', async () => {
+    await page.goto('/');
+  });
   
-  await expect(page.locator('a[data-test^="product"]')).toHaveCount(20);
+  await test.step('Verify mocked products are displayed', async () => {
+    await expect(page.locator('a[data-test^="product"]')).toHaveCount(20);
+  });
 });
