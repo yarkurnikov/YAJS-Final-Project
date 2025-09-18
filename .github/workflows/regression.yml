@@ -42,6 +42,9 @@ jobs:
         CREDIT_CARD_CVV: ${{ secrets.CREDIT_CARD_CVV }}
         # Override holder name if needed (default in constants/payments.constants.ts)
         CREDIT_CARD_HOLDER_NAME: ${{ vars.CREDIT_CARD_HOLDER_NAME }}
+
+        # Required Testomatio key secrets
+        TESTOMATIO_KEY: ${{ secrets.TESTOMATIO_KEY }}
         
         # CI specific settings
         CI: true
